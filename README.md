@@ -11,6 +11,8 @@ A Rust-powered test collector for pytest that aims to significantly improve coll
 This project is currently in the early stages of development. It is not yet ready for production use.
 It appears to be passing the pytest repo's collection tests.
 
+It is currently not any faster.
+
 ## Installation
 
 ```bash
