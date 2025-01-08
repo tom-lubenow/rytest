@@ -1,0 +1,15 @@
+[package]
+name = "rytest-core"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "rytest_core"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.20", features = ["extension-module"] }
+glob-match = "0.2"
+
+[dev-dependencies]
+rstest = "0.18"
