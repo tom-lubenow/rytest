@@ -1,3 +1,5 @@
+#![allow(non_local_definitions)]
+
 use glob_match::glob_match;
 use pyo3::prelude::*;
 use pyo3::types::{PyDict, PyList, PyTuple};
@@ -280,7 +282,7 @@ impl Collector {
 
                         let func = pytest.getattr("Function")?;
                         let node = func
-                            .call_method("from_parent", (parent,), Some(kwargs))?
+                            .call_method("from_parent", (parent,), Some(&kwargs))?
                             .into_py(py);
 
                         // Set additional attributes
@@ -297,7 +299,7 @@ impl Collector {
                     kwargs.set_item("name", &item.name)?;
                     let func = pytest.getattr("Function")?;
                     let node = func
-                        .call_method("from_parent", (parent,), Some(kwargs))?
+                        .call_method("from_parent", (parent,), Some(&kwargs))?
                         .into_py(py);
 
                     // Set additional attributes
@@ -313,7 +315,7 @@ impl Collector {
                 kwargs.set_item("name", &item.name)?;
                 let class = pytest.getattr("Class")?;
                 let node = class
-                    .call_method("from_parent", (parent,), Some(kwargs))?
+                    .call_method("from_parent", (parent,), Some(&kwargs))?
                     .into_py(py);
 
                 // Set additional attributes
@@ -352,7 +354,7 @@ impl Collector {
         kwargs.set_item("path", path_obj)?;
         let package = pytest.getattr("Package")?;
         Ok(package
-            .call_method("from_parent", (parent,), Some(kwargs))?
+            .call_method("from_parent", (parent,), Some(&kwargs))?
             .into())
     }
 
@@ -375,7 +377,7 @@ impl Collector {
         kwargs.set_item("path", path_obj)?;
         let module = pytest.getattr("Module")?;
         Ok(module
-            .call_method("from_parent", (parent,), Some(kwargs))?
+            .call_method("from_parent", (parent,), Some(&kwargs))?
             .into())
     }
 
