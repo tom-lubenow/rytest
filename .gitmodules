@@ -1,0 +1,3 @@
+[submodule "tests/pytest"]
+	path = tests/pytest
+	url = git@github.com:pytest-dev/pytest.git

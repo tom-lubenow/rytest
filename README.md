@@ -35,46 +35,56 @@ addopts = "-p rytest.collect"
 
 ## Development
 
+The project includes a comprehensive test suite that runs against pytest's own collection tests to ensure compatibility and correctness.
+
 ### Prerequisites
 
 - Rust (latest stable version)
 - Python 3.8+
-- maturin
-- pytest
+- uv (will be installed automatically by the check script)
 
 ### Setup
 
-1. Clone the repository:
+1. Clone the repository with submodules:
 ```bash
-git clone https://github.com/tom-lubenow/rytest.git
+git clone --recursive https://github.com/tom-lubenow/rytest.git
 cd rytest
 ```
 
-2. Create and activate a virtual environment:
+2. Run the check script to set up the environment and run tests:
+```bash
+./scripts/check.sh
+```
+
+This will:
+- Create a virtual environment
+- Install all dependencies using uv
+- Build the Rust collector
+- Run the test suite
+
+### Manual Setup
+
+If you prefer to set things up manually:
+
+1. Create and activate a virtual environment:
 ```bash
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```
 
-3. Install development dependencies:
+2. Install dependencies:
 ```bash
-pip install maturin pytest
+uv pip install pytest maturin
 ```
 
-4. Build and install in development mode:
+3. Build and install in development mode:
 ```bash
 maturin develop
 ```
 
-### Running Tests
-
-```bash
-pytest
-```
-
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please feel free to submit a Pull Request. Make sure to run the test suite using `./scripts/check.sh` before submitting.
 
 ## License
 
