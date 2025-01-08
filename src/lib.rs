@@ -7,7 +7,7 @@ use std::path::Path;
 
 /// A Python module implemented in Rust for faster pytest collection
 #[pymodule]
-fn pytest_collector(_py: Python, m: &PyModule) -> PyResult<()> {
+fn rytest_core(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_class::<Collector>()?;
     Ok(())
 }
@@ -544,7 +544,7 @@ mod tests {
     #[test]
     fn test_module_creation() {
         Python::with_gil(|py| {
-            let m = pyo3::wrap_pymodule!(pytest_collector);
+            let m = pyo3::wrap_pymodule!(rytest_core);
             let _module = m(py);
         });
     }

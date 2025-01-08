@@ -19,9 +19,10 @@ classifiers = [
 ]
 
 [project.entry-points.pytest11]
-rytest_collect = "rytest.collect"
+rytest_collect = "rytest.collect:RytestCollector"
 
 [tool.maturin]
 features = ["pyo3/extension-module"]
 python-source = "python"
 module-name = "rytest_core"
+python-packages = ["rytest"]
